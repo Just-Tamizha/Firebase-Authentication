@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
+import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signInAnonymously,onAuthStateChanged,signOut } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,9 +22,29 @@ const auth=getAuth(app);
 var createAccountButton=document.getElementById('createAccountButton');
 var signInButton=document.getElementById('signInButton');
 var signOutButton=document.getElementById('signOutButton');
+var signInAnon=document.getElementById('signInAnon');
 var signInDiv=document.getElementById('signIn');
 var signOutDiv=document.getElementById('signOut');
 var getResults=document.getElementById('getResults');
+
+// Anonymous Login
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        getResults.innerHTML="SignIn Successfully"
+        getResults.hidden=false
+        signInDiv.hidden=true
+        signOutDiv.hidden=false
+        // alert(uid)
+    } else {
+        getResults.innerHTML="SignOut Successfully"
+        getResults.hidden=false
+        signInDiv.hidden=false
+        signOutDiv.hidden=true
+    }
+});
 
 // Create User
 createAccountButton.onclick=()=>{
@@ -40,7 +60,6 @@ createAccountButton.onclick=()=>{
         // Error
         getResults.innerHTML=error.message;
         getResults.hidden=false
-        // ..
     });
 }
 
@@ -60,8 +79,24 @@ signInButton.onclick=()=>{
         // Error
         getResults.innerHTML=error.message;
         getResults.hidden=false
-        // ..
     });
+}
+
+// SignIn Anonymous
+signInAnon.onclick=()=>{
+    signInAnonymously(auth)
+    .then(()=>{
+        // Signed in 
+        getResults.innerHTML="SignIn Successfully"
+        getResults.hidden=false
+        signInDiv.hidden=true
+        signOutDiv.hidden=false
+    })
+    .catch((error) => {
+        // Error
+        getResults.innerHTML=error.message;
+        getResults.hidden=false
+      });
 }
 signOutButton.onclick=()=>{
     signOut(auth).then(() => {
