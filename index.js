@@ -39,7 +39,6 @@ onAuthStateChanged(auth, (user) => {
         signOutDiv.hidden=false
         // alert(uid)
     } else {
-        getResults.innerHTML="SignOut Successfully"
         getResults.hidden=false
         signInDiv.hidden=false
         signOutDiv.hidden=true
