@@ -1,0 +1,13 @@
+--------------------------------------------------------------------------------- YouTube Videos
+
+1. Firebase Web Introduction & Setup
+
+https://youtu.be/TWsRao6uwlQ?list=PLVldyrQbdsN-qqyQFLLJX_iHYy_XRnxXe
+
+2. Firebase Web Authentication (Email and Password)
+
+https://youtu.be/MoVCi_F2_KA?list=PLVldyrQbdsN-qqyQFLLJX_iHYy_XRnxXe
+
+3. Firebase Web Authentication (Anonymous)
+
+https://youtu.be/_c7-WDIdQ00?list=PLVldyrQbdsN-qqyQFLLJX_iHYy_XRnxXe
