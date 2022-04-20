@@ -11,3 +11,7 @@ https://youtu.be/MoVCi_F2_KA?list=PLVldyrQbdsN-qqyQFLLJX_iHYy_XRnxXe
 3. Firebase Web Authentication (Anonymous)
 
 https://youtu.be/_c7-WDIdQ00?list=PLVldyrQbdsN-qqyQFLLJX_iHYy_XRnxXe
+
+4. Firebase Web Authentication (Google SignIn)
+
+https://youtu.be/PmxuvD8ss8Y?t=1461
