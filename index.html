@@ -8,8 +8,44 @@
     <script type="module" src="./index.js"></script>
 </head>
 <body>
+  <script src="https://js.instamojo.com/v1/checkout.js"></script>
+    <script>
+      /* Start client-defined Callback Handler Functions */
+      function onOpenHandler () {
+        // alert('Payments Modal is Opened');
+      }
+
+      function onCloseHandler () {
+        // alert('Payments Modal is Closed');
+      }
+
+      function onPaymentSuccessHandler (response) {
+        // alert('Payment Success');
+        console.log('Payment Success Response', response);  
+      }
+
+      function onPaymentFailureHandler (response) {
+        // alert('Payment Failure');
+        console.log('Payment Failure Response', response);
+      }
+      /* End client-defined Callback Handler Functions */
+
+      /* Configuring Handlers */
+      Instamojo.configure({
+        handlers: {
+          onOpen: onOpenHandler,
+          onClose: onCloseHandler,
+          onSuccess: onPaymentSuccessHandler,
+          onFailure: onPaymentFailureHandler
+        }
+      });
+      
+      function onButtonClick() {
+        Instamojo.open('https://www.instamojo.com/@TamizhaStore/');
+      }
+    </script>
   <h4 style="text-align: center;">Tamizha-Crews</h4>
-  <h1>Firebase Authetication (signIn-signOut-anonymousLogin)</h1>
+  <h1>Firebase Authetication & Payments</h1>
   <div id="signIn">
     <p>Email</p>
     <input type="email" id="getEmail">
@@ -20,11 +56,13 @@
     <p><button id="signInAnon">SignIn Anonymous</button></p>
   </div>
   <div id="signOut" hidden>
-    <button id="signOutButton">Sign out</button>
+    <p id="userName" hidden></p>
+      <button id="signOutButton">Sign out</button>
+      <div style="margin-top: 30px;">
+        <button onclick="onButtonClick()">Pay</button>
+      </div>
   </div>
-  <p id="getResults" hidden></p>
-  
-    
+  <!-- <p id="getResults" hidden></p> -->
   
 </body>
 </html>
